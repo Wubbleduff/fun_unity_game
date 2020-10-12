@@ -17,9 +17,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        rb2d.AddForce(movement * speed);
+
+        if (Input.GetAxis("Vertical") == 1)
+        {
+
+            rb2d.transform.Translate(0, 1.0f * speed, 0);
+
+        }
+        if(Input.GetAxis("Vertical") == -1)
+        {
+
+            rb2d.transform.Translate(0,-1.0f * speed, 0);
+        }
+
     }
 }
