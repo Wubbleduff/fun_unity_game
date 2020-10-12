@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Score : MonoBehaviour
@@ -35,6 +36,13 @@ public class Score : MonoBehaviour
             playerTwoScore++;
             Debug.Log("player two score is" + playerTwoScore);
             //reset();
+        }
+
+
+        TextMeshProUGUI text = gameObject.GetComponent<TextMeshProUGUI>();
+        if (text != null)
+        {
+            text.text = playerOneScore + " | " + playerTwoScore;
         }
     }
 }
