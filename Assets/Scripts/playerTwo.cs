@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class playerTwo : MonoBehaviour
 {
-    private Rigidbody2D rb2d;
+
     public float speed;
+    public float lowerBound;
+    public float upperBound;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    private void FixedUpdate()
+    {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-
-            rb2d.transform.Translate(0, 1.0f * speed, 0);
+            transform.position += new Vector3(0, 1.0f * speed, 0);
 
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-
-            rb2d.transform.Translate(0, -1.0f * speed, 0);
+            transform.position += new Vector3(0, -1.0f * speed, 0);
         }
+
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, lowerBound, upperBound));
     }
 }

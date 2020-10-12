@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class playerOne : MonoBehaviour
 {
 
-    private Rigidbody2D rb2d;
+    public float lowerBound;
+    public float upperBound;
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        
     }
 
 
@@ -18,17 +20,22 @@ public class playerOne : MonoBehaviour
     void Update()
     {
 
+
+    }
+
+    private void FixedUpdate()
+    {
         if (Input.GetKey("w"))
         {
-
-            rb2d.transform.Translate(0, 1.0f * speed, 0);
+            transform.position += new Vector3(0, 1.0f * speed, 0);
 
         }
         if (Input.GetKey("s"))
         {
-
-            rb2d.transform.Translate(0, -1.0f * speed, 0);
+            transform.position += new Vector3(0, -1.0f * speed, 0);
         }
+
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, lowerBound, upperBound));
 
     }
 }
