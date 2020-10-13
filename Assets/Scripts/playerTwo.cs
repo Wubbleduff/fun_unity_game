@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class playerTwo : MonoBehaviour
 {
-
+    // speed of the player
     public float speed;
+
+    //boundries of the player arena
     public float lowerBound;
     public float upperBound;
 
@@ -21,6 +23,7 @@ public class playerTwo : MonoBehaviour
 
     }
 
+    //moves player
     private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.UpArrow))
@@ -33,6 +36,7 @@ public class playerTwo : MonoBehaviour
             transform.position += new Vector3(0, -1.0f * speed, 0);
         }
 
+        // keeps the pong from leaving the play area
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, lowerBound, upperBound));
     }
 }

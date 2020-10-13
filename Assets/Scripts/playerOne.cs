@@ -5,24 +5,27 @@ using UnityEngine;
 
 public class playerOne : MonoBehaviour
 {
-
+    //bounds of the player arena
     public float lowerBound;
     public float upperBound;
+
+    //speed of the player
     public float speed;
-    // Start is called before the first frame update
+
     void Start()
     {
         
     }
 
 
-    // Update is called once per frame
+
     void Update()
     {
 
 
     }
 
+    //moves the player
     private void FixedUpdate()
     {
         if (Input.GetKey("w"))
@@ -35,6 +38,7 @@ public class playerOne : MonoBehaviour
             transform.position += new Vector3(0, -1.0f * speed, 0);
         }
 
+        //keeps the player from leaving the play arena
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, lowerBound, upperBound));
 
     }
