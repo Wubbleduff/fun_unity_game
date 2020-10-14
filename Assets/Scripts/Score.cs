@@ -96,12 +96,12 @@ public class Score : MonoBehaviour
             if (playerOneScore == gameOverScore)
             {
                 text.text = "Game Over player One Wins!";
-
+                playerOneScore = 0;
             }
             else
             {
                 text.text = "Game Over player Two Wins!";
-
+                playerTwoScore = 0;
             }
         }
     }
