@@ -12,12 +12,15 @@ public class Score : MonoBehaviour
 
     public int gameOverScore;   // points till game over
 
-    private bool isGameOver;    //the score from writing over the game over text
+    public bool isGameOver;    //the score from writing over the game over text
+
+    private GameObject goButton; 
 
 
     void Start()
     {
-
+        goButton = GameObject.Find("startOverButton");
+        goButton.SetActive(false);
     }
 
     void FixedUpdate()
@@ -68,7 +71,7 @@ public class Score : MonoBehaviour
     }
 
     // resets positive of game obejects
-    void resetGame()
+    public void resetGame()
     {
         Transform playerOne = GameObject.Find("playerOne").GetComponent<Transform>();
         Transform playerTwo = GameObject.Find("playerTwo").GetComponent<Transform>();
@@ -103,6 +106,10 @@ public class Score : MonoBehaviour
                 text.text = "Game Over player Two Wins!";
                 playerTwoScore = 0;
             }
+
+           
         }
+
+        goButton.SetActive(true);
     }
 }
